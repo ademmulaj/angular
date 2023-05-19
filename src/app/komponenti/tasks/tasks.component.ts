@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { TaskService } from 'src/app/services/task.service';
 import { Task } from 'src/app/Task';
+import { Observable, Subscriber } from 'rxjs';
 
 @Component({
   selector: 'app-tasks',
@@ -9,7 +10,9 @@ import { Task } from 'src/app/Task';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent {
+  private apiUrl= 'http://localhost:5000/tasks'
   tasks: Task[] = [];
+
 
   constructor(private taskService: TaskService) {}
 
@@ -18,6 +21,17 @@ export class TasksComponent {
   }
 
   deleteTask(task: Task){
-    
+    this.taskService
+    .deleteTask(task)
+    .subscribe(() => (this.tasks = this.tasks.filter((t)=> t.id! === task.id))); 
+  }
+
+  toggleReminder(task: Task){
+    task.reminder = !task.reminder;
+    this.taskService.updateTaskReminder(task).subscribe();
+  }
+
+  addTask(task: Task){
+    console.log(task);
   }
 }

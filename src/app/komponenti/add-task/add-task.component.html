@@ -1,0 +1,23 @@
+<form>
+    <div class="form-control" (ngSubmit)="onSubmit()">
+        <label for="text">Taska</label>
+        <input type="text" name="text" [(ngModel)]="text" id="text" placeholder="Shto taskën">
+    </div>
+    <div class="form-control">
+        <label for="day">Data dhe dita</label>
+        <input type="text" 
+        name="day" 
+        [(ngModel)]="day" 
+        id="day" 
+        placeholder="Shto datën dhe kohën">
+    </div>
+    <div class="form-control-check">
+        <label for="reminder">Rikujto</label>
+        <input 
+        type="checkbox" 
+        name="reminder" 
+        [(ngModel)]="reminder" 
+        id="reminder">
+    </div>
+    <input type="submit" value="Ruaj Taskën" class="btn btn-block" />
+</form>
