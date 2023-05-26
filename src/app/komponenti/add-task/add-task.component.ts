@@ -15,9 +15,9 @@ export class AddTaskComponent {
   day!: string;
   reminder: boolean = false;
 
-  onSubmit(){
+  onSubmit() {
     if(!this.text){
-      alert('Ju lutem shkruani nje task');
+      alert('Ju lutem shkruani nje task!');
       return;
     }
     
